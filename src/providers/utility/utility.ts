@@ -13,6 +13,7 @@ export class UtilityProvider {
   public baseUrl: string = 'https://tranquil-anchorage-69313.herokuapp.com';
   //public baseUrl: string = 'http://localhost:5000';
   private userData: any;
+  public token: any;
   constructor(public http: HttpClient, private localStorage: LocalStorageProvider) {
     console.log('Hello UtilityProvider Provider');
   }

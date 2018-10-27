@@ -16,6 +16,7 @@ export class LoginServiceProvider {
   }
 
   checkLogin(body){ 
+    body['token'] = this.utility.token;
     return new Promise((resolve) => {
       this.http.post(this.utility.baseUrl + '/login', body).subscribe(response => {
         resolve(response);
