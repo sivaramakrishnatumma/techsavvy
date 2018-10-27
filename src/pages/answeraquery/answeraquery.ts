@@ -21,12 +21,12 @@ import { LoadqueriesProvider } from '../../providers/loadqueries/loadqueries';
 export class AnsweraqueryPage {
   private user: any;
   private queries: any = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private utility: UtilityProvider, private localStorage: LocalStorageProvider, private alertCtrl: AlertServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private utility: UtilityProvider, private storage: LocalStorageProvider, private alertCtrl: AlertServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AnsweraqueryPage');
-    this.localStorage.getItem('user').then(user => {
+    this.storage.getItem('user').then(user => {
       this.user = user;
       this.loadQueries();
     });

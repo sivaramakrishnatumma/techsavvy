@@ -20,12 +20,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ChatwithexpertPage {
   private user: any;
   private users: any[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private usersService: UsersServiceProvider, private alertCtrl: AlertServiceProvider, private utility: UtilityProvider, private localStorage: LocalStorageProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private usersService: UsersServiceProvider, private alertCtrl: AlertServiceProvider, private utility: UtilityProvider, private storage: LocalStorageProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatwithexpertPage');
-    this.localStorage.getItem('user').then(user => {
+    this.storage.getItem('user').then(user => {
       this.user = user;
       this.getUsers();
     });

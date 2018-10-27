@@ -31,13 +31,12 @@ export class HomePage {
       'password': this.password
     }
     this.loginService.checkLogin(user).then((response: any) => {
-      console.log(response);
       if (response.success) {
         this.utility.putUserData(response.extras.userProfile);
         this.navCtrl.push('DashboardPage');
       }
       else {
-        this.alertCtrl.showAlert('Oops', response.extras.msg);
+        this.alertCtrl.showAlert('Oops...', response.extras.msg);
       }
     }, error => {
       console.log(error);

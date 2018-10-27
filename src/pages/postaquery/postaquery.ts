@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { PostQueryServiceProvider } from '../../providers/post-query-service/post-query-service';
 import { UtilityProvider } from './../../providers/utility/utility';
+import { LocalStorageProvider } from '../../providers/local-storage/local-storage';
 
 /**
  * Generated class for the PostaqueryPage page.
@@ -18,12 +19,12 @@ import { UtilityProvider } from './../../providers/utility/utility';
   templateUrl: 'postaquery.html',
 })
 export class PostaqueryPage {
+  private user: any;
   private technologies: any = [];
   private postquery: FormGroup;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private postQueryService: PostQueryServiceProvider, private utility: UtilityProvider, private alertCtrl: AlertServiceProvider) {
-    this.postquery = this.formBuilder.group({
-      title: ['', Validators.required],
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private postQueryService: PostQueryServiceProvider, private utility: UtilityProvider, private alertCtrl: AlertServiceProvider, private storage: LocalStorageProvider) {
+    this.postquery = this.formBuilder.group({ 
       description: ['', Validators.required],
       technology: ['', Validators.required]
     });
@@ -31,6 +32,9 @@ export class PostaqueryPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostaqueryPage');
+    this.storage.getItem('user').then(user => {
+      this.user = user;
+    });
     this.technologies = [
       'Java',
       'Angular 2',
@@ -42,13 +46,14 @@ export class PostaqueryPage {
       'Bootstrap',
       'BackboneJS',
       'ReactJS'
-    ]
+    ];
+
   }
 
   postQuery(){
     console.log(this.postquery.value);
     let post = {
-      'postBy': this.utility.getUserData().empId,
+      'postBy': this.user.empId,
       'query': this.postquery.value.title,
       'desc': this.postquery.value.description,
       'technologiesInvolved': this.postquery.value.technology,
