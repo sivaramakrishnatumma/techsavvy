@@ -1,0 +1,23 @@
+page-answeraquery {
+    .scroll-content{
+        background-color: rgba(251, 15, 42, 0.7);
+    }
+    p{
+        overflow: hidden;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        margin-bottom: 10px !important;
+    }
+    .technologies{
+        padding: 5px;
+        margin: 5px 5px 5px 0px;
+        background-color: #CDDC39;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    .postBy{
+        color: #000;
+    }
+}

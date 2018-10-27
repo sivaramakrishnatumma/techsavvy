@@ -1,0 +1,34 @@
+<!--
+  Generated template for the PostaqueryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Post a Query</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding> 
+  <form [formGroup]="postquery" (ngSubmit)="postQuery()">
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea style="height: 100px;" formControlName="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Technologies</ion-label>
+        <ion-select [(ngModel)]="technology" formControlName="technology" multiple>
+          <ion-option *ngFor="let techology of technologies" [value]="employee">{{techology}}</ion-option>
+        </ion-select>
+      </ion-item>
+    <button ion-button type="submit" block style="margin-top: 20px;" [disabled]="!postquery.valid">Post</button>
+  </form>
+</ion-content>

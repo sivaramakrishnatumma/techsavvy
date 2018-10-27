@@ -1,0 +1,23 @@
+page-home {
+    .scroll-content{
+        background: url('../assets/imgs/login_bg.jpg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-color: #0f274c;
+        background-position: bottom;
+        //padding-top: 50% !important;
+    }
+    .item-block{
+        background: transparent;
+        color: #fff;
+    }
+    .heading{
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        font-size: 4em;
+        font-family: fantasy;
+        margin-top: 70px !important;
+        margin-bottom: 48px;
+    }
+}

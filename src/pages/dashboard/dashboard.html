@@ -1,0 +1,82 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+  <ion-navbar primary hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="openMenu()">
+        <ion-icon name="md-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title center>
+      Dashboard
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-content class="card-background-page">
+
+    <ion-card class="search" (click)="cardTapped('search')">
+      <div class="transparent-bg">
+        <img src="assets/imgs/search.png" />
+      </div>
+      <div class="card-title">Search</div>
+      <div class="card-subtitle"></div>
+    </ion-card>
+
+    <ion-card class="postAQuery" (click)="cardTapped('postAQuery')">
+      <div class="transparent-bg">
+        <img src="assets/imgs/ask-query.png" />
+      </div>
+      <div class="card-title">Post a Query</div>
+      <div class="card-subtitle"></div>
+    </ion-card>
+
+    <ion-card class="answerAQuery" (click)="cardTapped('answerAQuery')">
+      <div class="transparent-bg">
+        <img src="assets/imgs/answeraquestion.png" />
+      </div>
+      <div class="card-title">Answer a Query</div>
+      <div class="card-subtitle"></div>
+    </ion-card>
+
+    <ion-card class="myQueries" (click)="cardTapped('myQueries')">
+      <div class="transparent-bg">
+        <img src="assets/imgs/myopenqueries.gif" />
+      </div>
+      <div class="card-title">My Queries</div>
+      <div class="card-subtitle">3 Queries</div>
+    </ion-card>
+
+    <ion-card class="chatWithAnExpert" (click)="cardTapped('chatWithAnExpert')">
+      <div class="transparent-bg">
+        <img src="assets/imgs/experts.png" />
+      </div>
+      <div class="card-title">Chat with an expert</div>
+      <div class="card-subtitle"></div>
+    </ion-card>
+
+    <ion-card class="myCredits" (click)="cardTapped('myCredits')">
+      <div class="transparent-bg">
+        <img src="assets/imgs/wallet.png" />
+      </div>
+      <div class="card-title">My Credits</div>
+      <div class="card-subtitle"></div>
+    </ion-card>
+
+  </ion-content>
+</ion-content>

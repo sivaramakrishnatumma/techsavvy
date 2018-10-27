@@ -1,0 +1,26 @@
+<ion-header>
+  <!-- <ion-navbar>
+    <ion-title>
+      Ask Infy Expert
+    </ion-title>
+  </ion-navbar> -->
+</ion-header>
+
+<ion-content padding>
+
+  <h1 class="heading">Tech Savvy</h1>
+  <ion-item>
+    <ion-label floating>Employee ID</ion-label>
+    <ion-input [(ngModel)]="empId" type="text"></ion-input>
+    
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input [(ngModel)]="password" type="password"></ion-input>
+  </ion-item>
+
+  <div padding>
+    <button ion-button block (click)="login()">Sign In</button>
+  </div>
+</ion-content>
