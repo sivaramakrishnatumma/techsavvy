@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "17676029351",
+    "firebase_url": "https://techsavvy-c3e6e.firebaseio.com",
+    "project_id": "techsavvy-c3e6e",
+    "storage_bucket": "techsavvy-c3e6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17676029351:android:98f9bf7d14e30d71",
+        "android_client_info": {
+          "package_name": "com.infy.techSavvy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17676029351-6185bm2uv4kn2rj29rj8gm6keqqbi00t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwoI5CiGQkwf9T2WepzRzY2uUgjHaThdo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

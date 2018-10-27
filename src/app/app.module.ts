@@ -17,6 +17,7 @@ import { PostQueryServiceProvider } from '../providers/post-query-service/post-q
 import { UsersServiceProvider } from '../providers/users-service/users-service';
 import { LocalStorageProvider } from '../providers/local-storage/local-storage';
 import { AlertServiceProvider } from '../providers/alert-service/alert-service';
+import { FCM } from '@ionic-native/fcm';
 @NgModule({
   declarations: [
     MyApp
@@ -44,7 +45,8 @@ import { AlertServiceProvider } from '../providers/alert-service/alert-service';
     PostQueryServiceProvider,
     UsersServiceProvider,
     LocalStorageProvider,
-    AlertServiceProvider
+    AlertServiceProvider,
+    FCM
   ]
 })
 export class AppModule {}
