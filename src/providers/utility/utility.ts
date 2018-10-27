@@ -19,7 +19,7 @@ export class UtilityProvider {
 
   putUserData(user){
     this.userData = user;
-    // this.localStorage.setItem('user', user);
+    this.localStorage.setItem('user', user);
   }
   getUserData(){
     return this.userData;

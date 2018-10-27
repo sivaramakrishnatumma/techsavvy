@@ -2,6 +2,7 @@ import { AlertServiceProvider } from './../../providers/alert-service/alert-serv
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoadqueriesProvider } from '../../providers/loadqueries/loadqueries';
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
 
 /**
  * Generated class for the SearchPage page.
@@ -19,7 +20,7 @@ export class SearchPage {
   private queries: any = [];
   private allQueries: any = [];
   private searchText: string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertServiceProvider, public menuCtrl:MenuController) {
   }
 
   ionViewDidLoad() {
@@ -57,5 +58,12 @@ export class SearchPage {
   onCancel() {
     this.searchText = '';
     this.queries = this.allQueries;
+  }
+  openMenu() {
+    this.menuCtrl.open();
+  }
+  commentAdded(item){
+    console.log(item);
+    item.isCommentOpen = false;
   }
 }

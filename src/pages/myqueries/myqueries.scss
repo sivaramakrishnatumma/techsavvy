@@ -1,6 +1,6 @@
 page-myqueries {
     .scroll-content{
-        background-color: rgba(116, 152, 74, 0.8);;
+        padding: 0px !important;
     }
     p{
         overflow: hidden;
@@ -13,8 +13,13 @@ page-myqueries {
     .technologies{
         padding: 5px;
         margin: 5px 5px 5px 0px;
-        background-color: #CDDC39;
+        background-color: rgba(72, 138, 255, 0.31);
         border-radius: 5px;
         display: inline-block;
+    }
+    ion-card{
+        width: 100% !important;
+        margin : 0 !important;
+        border-bottom: 1px solid #ccc;
     }
 }

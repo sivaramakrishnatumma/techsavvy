@@ -1,6 +1,6 @@
 page-answeraquery {
     .scroll-content{
-        background-color: rgba(251, 15, 42, 0.7);
+        padding: 0px !important;
     }
     p{
         overflow: hidden;
@@ -13,11 +13,16 @@ page-answeraquery {
     .technologies{
         padding: 5px;
         margin: 5px 5px 5px 0px;
-        background-color: #CDDC39;
+        background-color: rgba(72, 138, 255, 0.31);
         border-radius: 5px;
         display: inline-block;
     }
     .postBy{
         color: #000;
+    }
+    ion-card{
+        width: 100% !important;
+        margin : 0 !important;
+        border-bottom: 1px solid #ccc;
     }
 }
