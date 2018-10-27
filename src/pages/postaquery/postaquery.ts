@@ -1,9 +1,8 @@
-import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { UtilityProvider } from './../../providers/utility/utility';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { PostQueryServiceProvider } from '../../providers/post-query-service/post-query-service';
+import { UtilityProvider } from './../../providers/utility/utility';
 
 /**
  * Generated class for the PostaqueryPage page.

@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController, IonicPage } from 'ionic-angular';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
-import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { DashboardPage } from '../dashboard/dashboard';
 import { UtilityProvider } from '../../providers/utility/utility';
 
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
@@ -27,7 +33,7 @@ export class HomePage {
       console.log(response);
       if (response.success) {
         this.utility.putUserData(response.extras.userProfile);
-        this.navCtrl.push(DashboardPage);
+        this.navCtrl.push('DashboardPage');
       }
       else {
         this.showAlert('Oops', response.extras.msg);

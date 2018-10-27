@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoadqueriesProvider } from '../../providers/loadqueries/loadqueries';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { UtilityProvider } from '../../providers/utility/utility';
+import { LoadqueriesProvider } from '../../providers/loadqueries/loadqueries';
 
 /**
  * Generated class for the AnsweraqueryPage page.

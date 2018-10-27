@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoadqueriesProvider } from '../../providers/loadqueries/loadqueries';
-import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 /**
  * Generated class for the SearchPage page.
