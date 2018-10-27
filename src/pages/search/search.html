@@ -5,15 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar primary hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="openMenu()">
+        <ion-icon name="md-menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Search</ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
-<ion-content>
+<!-- <ion-content>
   <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
   </ion-searchbar>
   <ion-card *ngFor="let item of queries">
@@ -28,4 +30,50 @@
       <span class="technologies" *ngFor="let technology of item.technologiesInvolved">{{technology}}</span>
     </ion-card-content>
   </ion-card>
+</ion-content> -->
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+  <div class="cards-div">
+  <ion-card *ngFor="let item of queries">
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon name="contact"></ion-icon>
+      </ion-avatar>
+      <h2>{{item.postBy}}</h2>
+      <p>Hyderabad SEZ</p>
+    </ion-item>
+    <!-- <img src={{item.image}}> -->
+    <ion-card-content>
+      <p> {{item.desc}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="ios-contacts-outline"></ion-icon>
+          <div>12 Replies</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small (click)="item.isCommentOpen = !item.isCommentOpen">
+          <ion-icon name="ios-chatbubbles"></ion-icon>
+          <div>Comment</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding: 0px 15px;" *ngIf="item.isCommentOpen">
+      <textarea [(ngModel)] = "comment">
+
+      </textarea>
+      <button ion-button color="dark" round (click)="commentAdded(item)" style="margin: 10px 0px;">Comment</button>
+    </ion-row>
+  </ion-card>
+  </div>
 </ion-content>

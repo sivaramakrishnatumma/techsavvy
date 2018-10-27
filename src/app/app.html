@@ -1,14 +1,24 @@
 <ion-menu [content]="mycontent">
 
     <ion-content>
+        <div class="menu-header">
+            <ion-icon name="contact"></ion-icon>
+            <div class="right-div">
+                <p>Siva Rama Krishna</p>
+                <p>DXEMP</p>
+            </div>
+        </div>
         <ion-list>
             <button ion-item menuClose (click)="openPage(homePage)">
+                <ion-icon name="contacts"></ion-icon>
                 My Profile
             </button>
             <button ion-item menuClose (click)="openPage(catsPage)">
+                <ion-icon name="heart"></ion-icon>
                 About
             </button>
             <button ion-item menuClose (click)="openPage(dogsPage)">
+                <ion-icon name="ios-exit-outline"></ion-icon>
                 Logout
             </button>
         </ion-list>
