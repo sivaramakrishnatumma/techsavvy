@@ -1,3 +1,4 @@
+import { AlertServiceProvider } from './../../providers/alert-service/alert-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoadqueriesProvider } from '../../providers/loadqueries/loadqueries';
@@ -17,7 +18,7 @@ import { UtilityProvider } from '../../providers/utility/utility';
 })
 export class MyqueriesPage {
   private queries: any = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertController, private utility: UtilityProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertServiceProvider, private utility: UtilityProvider) {
   }
 
   ionViewDidLoad() {
@@ -32,21 +33,12 @@ export class MyqueriesPage {
         this.queries = response.extras.queries.filter(item => item.postBy === this.utility.getUserData().empId);
       }
       else {
-        this.showAlert('Oops', response.extras.msg);
+        this.alertCtrl.showAlert('Oops', response.extras.msg);
       }
     }, error => {
       console.log(error);
-      this.showAlert('Oops', 'Unable to login now, please try again...');
+      this.alertCtrl.showAlert('Oops', 'Unable to login now, please try again...');
     });
-  }
-
-  showAlert(title, subTitle) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: subTitle,
-      buttons: ['OK']
-    });
-    alert.present();
   }
 
 }

@@ -1,3 +1,7 @@
+import { AlertServiceProvider } from './../../providers/alert-service/alert-service';
+import { LocalStorageProvider } from './../../providers/local-storage/local-storage';
+import { UtilityProvider } from './../../providers/utility/utility';
+import { UsersServiceProvider } from './../../providers/users-service/users-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -14,12 +18,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'chatwithexpert.html',
 })
 export class ChatwithexpertPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private user: any;
+  private users: any[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private usersService: UsersServiceProvider, private alertCtrl: AlertServiceProvider, private utility: UtilityProvider, private localStorage: LocalStorageProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatwithexpertPage');
+    this.localStorage.getItem('user').then(user => {
+      this.user = user;
+      this.getUsers();
+    });
   }
 
+  private getUsers() {
+    this.usersService.getAllUsers().then((response: any)=> {
+      if (response.success) {
+        this.users = response.extras.users.filter(item => item.empId !== this.user.empId);
+      }
+      else {
+        this.alertCtrl.showAlert('Oops', response.extras.msg);
+      }
+    }, err => {
+      this.alertCtrl.showAlert('Oops', 'Unable to connect with the server, please try later...');
+    });
+  }
 }

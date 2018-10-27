@@ -1,3 +1,5 @@
+import { AlertServiceProvider } from './../../providers/alert-service/alert-service';
+import { LocalStorageProvider } from './../../providers/local-storage/local-storage';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
@@ -17,36 +19,31 @@ import { LoadqueriesProvider } from '../../providers/loadqueries/loadqueries';
   templateUrl: 'answeraquery.html',
 })
 export class AnsweraqueryPage {
+  private user: any;
   private queries: any = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertController, private utility: UtilityProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private utility: UtilityProvider, private localStorage: LocalStorageProvider, private alertCtrl: AlertServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AnsweraqueryPage');
-    this.loadQueries();
+    this.localStorage.getItem('user').then(user => {
+      this.user = user;
+      this.loadQueries();
+    });
   }
 
   loadQueries() {
     this.loadqueriesProvider.getQueries().then((response: any) => {
       console.log(response);
       if (response.success) {
-        this.queries = response.extras.queries.filter(item => item.postBy !== this.utility.getUserData().empId);
+        this.queries = response.extras.queries.filter(item => item.postBy !== this.user.empId);
       }
       else {
-        this.showAlert('Oops', response.extras.msg);
+        this.alertCtrl.showAlert('Oops', response.extras.msg);
       }
     }, error => {
       console.log(error);
-      this.showAlert('Oops', 'Unable to login now, please try again...');
+      this.alertCtrl.showAlert('Oops', 'Unable to login now, please try again...');
     });
-  }
-
-  showAlert(title, subTitle) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: subTitle,
-      buttons: ['OK']
-    });
-    alert.present();
   }
 }

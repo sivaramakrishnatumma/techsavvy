@@ -6,6 +6,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { FormsModule } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 
@@ -13,6 +14,9 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { UtilityProvider } from '../providers/utility/utility';
 import { LoadqueriesProvider } from '../providers/loadqueries/loadqueries';
 import { PostQueryServiceProvider } from '../providers/post-query-service/post-query-service';
+import { UsersServiceProvider } from '../providers/users-service/users-service';
+import { LocalStorageProvider } from '../providers/local-storage/local-storage';
+import { AlertServiceProvider } from '../providers/alert-service/alert-service';
 @NgModule({
   declarations: [
     MyApp
@@ -22,7 +26,8 @@ import { PostQueryServiceProvider } from '../providers/post-query-service/post-q
     IonicModule.forRoot(MyApp),
     HttpModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +41,10 @@ import { PostQueryServiceProvider } from '../providers/post-query-service/post-q
     UtilityProvider,
     LoadqueriesProvider,
     LoadqueriesProvider,
-    PostQueryServiceProvider
+    PostQueryServiceProvider,
+    UsersServiceProvider,
+    LocalStorageProvider,
+    AlertServiceProvider
   ]
 })
 export class AppModule {}

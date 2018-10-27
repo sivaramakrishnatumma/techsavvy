@@ -1,3 +1,4 @@
+import { AlertServiceProvider } from './../../providers/alert-service/alert-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -20,7 +21,7 @@ export class PostaqueryPage {
   private technologies: any = [];
   private postquery: FormGroup;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private postQueryService: PostQueryServiceProvider, private utility: UtilityProvider, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private postQueryService: PostQueryServiceProvider, private utility: UtilityProvider, private alertCtrl: AlertServiceProvider) {
     this.postquery = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -55,20 +56,11 @@ export class PostaqueryPage {
       'answers': []
     };
     this.postQueryService.postAQuery(post).then(success => {
-      this.showAlert('Success', 'Your query has been posted successfully');
+      this.alertCtrl.showAlert('Success', 'Your query has been posted successfully');
       this.navCtrl.pop();
     }, error => {
-      this.showAlert('Oops', 'Unable to post a query, please try again...');
+      this.alertCtrl.showAlert('Oops', 'Unable to post a query, please try again...');
     })
-  }
-
-  showAlert(title, subTitle) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: subTitle,
-      buttons: ['OK']
-    });
-    alert.present();
   }
 
 }

@@ -3,23 +3,24 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
-  Generated class for the LoadqueriesProvider provider.
+  Generated class for the UsersServiceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class LoadqueriesProvider {
+export class UsersServiceProvider {
 
   constructor(public http: HttpClient, private utility: UtilityProvider) {
-    console.log('Hello LoadqueriesProvider Provider');
+    console.log('Hello UsersServiceProvider Provider');
   }
 
-  getQueries(){ 
+  getAllUsers() {
     return new Promise((resolve) => {
-      this.http.get(this.utility.baseUrl + '/posts').subscribe(response => {
+      this.http.get(this.utility.baseUrl + '/users').subscribe(response => {
         resolve(response);
       })
     });
   }
+
 }
