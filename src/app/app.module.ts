@@ -13,6 +13,8 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { UtilityProvider } from '../providers/utility/utility';
 import { LoadqueriesProvider } from '../providers/loadqueries/loadqueries';
 import { PostQueryServiceProvider } from '../providers/post-query-service/post-query-service';
+import { FCM } from '@ionic-native/fcm';
+
 @NgModule({
   declarations: [
     MyApp
@@ -36,7 +38,8 @@ import { PostQueryServiceProvider } from '../providers/post-query-service/post-q
     UtilityProvider,
     LoadqueriesProvider,
     LoadqueriesProvider,
-    PostQueryServiceProvider
+    PostQueryServiceProvider,
+    FCM
   ]
 })
 export class AppModule {}
