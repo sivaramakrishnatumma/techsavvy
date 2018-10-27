@@ -21,20 +21,10 @@
     </ion-item>
     <ion-item>
         <ion-label floating>Technologies</ion-label>
-        <!-- <ion-select [(ngModel)]="technology" formControlName="technology" multiple>
+        <ion-select [(ngModel)]="technology" formControlName="technology" multiple>
           <ion-option *ngFor="let techology of technologies" [value]="employee">{{techology}}</ion-option>
         </ion-select>
-        <ion-item> -->
-          <ionic-selectable
-              [(ngModel)]="technology"
-              formControlName="technology"
-              [items]="technologies"
-              [canSearch]="true"
-            >{{techology}}
-          </ionic-selectable>
-      <!-- </ion-item> -->
-        <!-- <ion-select [selectOptions]='technologies' [selectValues]='values'></ion-select> -->
-      </ion-item>
+     </ion-item>
     <button ion-button type="submit" block style="margin-top: 20px;" [disabled]="!postquery.valid">Post</button>
   </form>
 </ion-content>
