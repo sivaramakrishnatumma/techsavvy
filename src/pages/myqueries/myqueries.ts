@@ -45,5 +45,7 @@ export class MyqueriesPage {
       this.alertCtrl.showAlert('Oops', 'Unable to login now, please try again...');
     });
   }
-
+  getTimeDiff(time){
+    return this.utility.timeDifference(time).time;
+  }
 }

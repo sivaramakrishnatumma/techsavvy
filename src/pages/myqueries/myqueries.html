@@ -15,15 +15,50 @@
 
 <ion-content padding>
   <ion-card *ngFor="let item of queries">
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon name="contact"></ion-icon>
+      </ion-avatar>
+      <h2>{{item.postBy}}</h2>
+      <p>Hyderabad SEZ</p>
+    </ion-item>
+    <!-- <img src={{item.image}}> -->
     <ion-card-content>
-      <ion-card-title>
-        {{item.query}}
-      </ion-card-title>
-      <p>
-        {{item.desc}}
-      </p>
-      <span class="technologies" *ngFor="let technology of item.technologiesInvolved">{{technology}}</span>
+      <p> {{item.desc}}</p>
+      <span class="tech" *ngFor="let tech of item.technologiesInvolved">{{tech}}</span>
     </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small (click)="item.isReplyOpen = !item.isReplyOpen">
+          <ion-icon name="ios-contacts-outline"></ion-icon>
+          <div>{{item.answers && item.answers.length}} Replies</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small (click)="item.isCommentOpen = !item.isCommentOpen">
+          <ion-icon name="ios-chatbubbles"></ion-icon>
+          <div>Comment</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center style="padding-top: 14px;">
+        <ion-note>
+          {{getTimeDiff(item.timestamp)}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding: 0px 15px;" *ngIf="item.isCommentOpen">
+      <textarea [(ngModel)] = "comment">
+
+      </textarea>
+      <button ion-button color="dark" round (click)="commentAdded(item)" style="margin: 10px 0px;">Comment</button>
+    </ion-row>
+    <ion-row style="padding: 0px 15px; margin-bottom: 10px;" *ngIf="item.isReplyOpen && item.answers.length > 0">
+      <div *ngFor="let reply of item.answers.slice(0,3)" style="width: 100%;">
+        <p class="reply-name">{{reply.commentedBy}}</p>
+        <div class="reply-comment">{{reply.comment}}</div>
+      </div>
+      <span class="showMore" *ngIf="item.answers && item.answers.length > 3">Show More</span>
+    </ion-row>
   </ion-card>
- 
 </ion-content>
