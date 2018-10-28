@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoadqueriesProvider } from '../../providers/loadqueries/loadqueries';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
+import { UtilityProvider } from '../../providers/utility/utility';
 
 /**
  * Generated class for the SearchPage page.
@@ -20,7 +21,7 @@ export class SearchPage {
   private queries: any = [];
   private allQueries: any = [];
   private searchText: string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertServiceProvider, public menuCtrl:MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertServiceProvider, public menuCtrl:MenuController, public utility: UtilityProvider) {
   }
 
   ionViewDidLoad() {
@@ -65,5 +66,11 @@ export class SearchPage {
   commentAdded(item){
     console.log(item);
     item.isCommentOpen = false;
+  }
+  getTimeDiff(time){
+    return this.utility.timeDifference(time).time;
+  }
+  postQuery(){
+    this.navCtrl.push('PostaqueryPage');
   }
 }

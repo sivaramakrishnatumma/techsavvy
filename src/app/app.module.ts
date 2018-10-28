@@ -1,3 +1,4 @@
+import { Media } from '@ionic-native/media';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from "@angular/common/http";
@@ -18,6 +19,7 @@ import { UsersServiceProvider } from '../providers/users-service/users-service';
 import { LocalStorageProvider } from '../providers/local-storage/local-storage';
 import { AlertServiceProvider } from '../providers/alert-service/alert-service';
 import { FCM } from '@ionic-native/fcm';
+import { Toast } from '@ionic-native/toast';
 @NgModule({
   declarations: [
     MyApp
@@ -46,7 +48,9 @@ import { FCM } from '@ionic-native/fcm';
     UsersServiceProvider,
     LocalStorageProvider,
     AlertServiceProvider,
-    FCM
+    FCM,
+    Media,
+    Toast
   ]
 })
 export class AppModule {}

@@ -15,23 +15,6 @@
   </ion-navbar>
 
 </ion-header>
-<!-- <ion-content>
-  <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
-  </ion-searchbar>
-  <ion-card *ngFor="let item of queries">
-    <ion-card-content>
-      <ion-card-title>
-        {{item.query}}
-      </ion-card-title>
-      <p>
-        {{item.desc}}
-      </p>
-      <p><span>Posted By </span><span class="postBy">{{item.postBy}}</span></p>
-      <span class="technologies" *ngFor="let technology of item.technologiesInvolved">{{technology}}</span>
-    </ion-card-content>
-  </ion-card>
-</ion-content> -->
-
 <ion-content>
   <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
   </ion-searchbar>
@@ -53,7 +36,7 @@
       <ion-col>
         <button ion-button icon-start clear small>
           <ion-icon name="ios-contacts-outline"></ion-icon>
-          <div>12 Replies</div>
+          <div>{{item.answers.length}} Replies</div>
         </button>
       </ion-col>
       <ion-col>
@@ -62,9 +45,9 @@
           <div>Comment</div>
         </button>
       </ion-col>
-      <ion-col center text-center>
+      <ion-col center text-center style="padding-top: 14px;">
         <ion-note>
-          11h ago
+          {{getTimeDiff(item.timestamp)}}
         </ion-note>
       </ion-col>
     </ion-row>
@@ -76,4 +59,7 @@
     </ion-row>
   </ion-card>
   </div>
+  <ion-fab bottom right (click)="postQuery()">
+    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
