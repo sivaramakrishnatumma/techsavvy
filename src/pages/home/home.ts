@@ -33,7 +33,7 @@ export class HomePage {
     this.loginService.checkLogin(user).then((response: any) => {
       if (response.success) {
         this.utility.putUserData(response.extras.userProfile);
-        this.navCtrl.push('DashboardPage');
+        this.navCtrl.setRoot('SearchPage');
       }
       else {
         this.alertCtrl.showAlert('Oops...', response.extras.msg);

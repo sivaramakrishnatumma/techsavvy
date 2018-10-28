@@ -30,13 +30,14 @@
     <!-- <img src={{item.image}}> -->
     <ion-card-content>
       <p> {{item.desc}}</p>
+      <span class="tech" *ngFor="let tech of item.technologiesInvolved">{{tech}}</span>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
-        <button ion-button icon-start clear small>
+        <button ion-button icon-start clear small (click)="item.isReplyOpen = !item.isReplyOpen">
           <ion-icon name="ios-contacts-outline"></ion-icon>
-          <div>{{item.answers.length}} Replies</div>
+          <div>{{item.answers && item.answers.length}} Replies</div>
         </button>
       </ion-col>
       <ion-col>
@@ -56,6 +57,13 @@
 
       </textarea>
       <button ion-button color="dark" round (click)="commentAdded(item)" style="margin: 10px 0px;">Comment</button>
+    </ion-row>
+    <ion-row style="padding: 0px 15px; margin-bottom: 10px;" *ngIf="item.isReplyOpen && item.answers.length > 0">
+      <div *ngFor="let reply of item.answers.slice(0,3)" style="width: 100%;">
+        <p class="reply-name">{{reply.commentedBy}}</p>
+        <div class="reply-comment">{{reply.comment}}</div>
+      </div>
+      <span class="showMore" *ngIf="item.answers && item.answers.length > 3">Show More</span>
     </ion-row>
   </ion-card>
   </div>

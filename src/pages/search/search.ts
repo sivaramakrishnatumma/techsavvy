@@ -1,3 +1,5 @@
+import { PostQueryServiceProvider } from './../../providers/post-query-service/post-query-service';
+import { LocalStorageProvider } from './../../providers/local-storage/local-storage';
 import { AlertServiceProvider } from './../../providers/alert-service/alert-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
@@ -18,15 +20,20 @@ import { UtilityProvider } from '../../providers/utility/utility';
   templateUrl: 'search.html',
 })
 export class SearchPage {
+  private user: any;
   private queries: any = [];
   private allQueries: any = [];
   private searchText: string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertServiceProvider, public menuCtrl:MenuController, public utility: UtilityProvider) {
+  private comment: string = '';
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loadqueriesProvider: LoadqueriesProvider, private alertCtrl: AlertServiceProvider, public menuCtrl:MenuController, public utility: UtilityProvider, private storage: LocalStorageProvider, private postAQuery: PostQueryServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
-    this.loadQueries();
+    this.storage.getItem('user').then(user => {
+      this.user = user;
+      this.loadQueries();
+    });
   }
 
   loadQueries() {
@@ -51,7 +58,14 @@ export class SearchPage {
     }
     else {
       this.queries = this.queries.filter(item => {
-        return item.query.toLowerCase().indexOf(this.searchText) !== -1 || item.desc.toLowerCase().indexOf(this.searchText) !== -1;
+        let exists = false
+        item.technologiesInvolved.forEach(tech => {
+          if(tech.toLowerCase().indexOf(this.searchText.toLocaleLowerCase()) !== -1)
+          exists = true;  
+        });
+        if((item.desc && item.desc.toLowerCase().indexOf(this.searchText) !== -1))
+          exists = true;  
+        return exists;
       })
     }
   }
@@ -64,8 +78,21 @@ export class SearchPage {
     this.menuCtrl.open();
   }
   commentAdded(item){
-    console.log(item);
-    item.isCommentOpen = false;
+    this.postAQuery.postReply(item, {
+      'commentedBy': this.user.name,
+      'comment': this.comment
+    }).then((response:any) => {
+      if(response.success) {
+        item.isCommentOpen = false;
+        item.answers.push({
+          'commentedBy': this.user.name,
+          'comment': this.comment
+        });
+        this.comment = '';
+      } else {
+        this.alertCtrl.showAlert('Oops...', 'Failed to add comment...')
+      }
+    })
   }
   getTimeDiff(time){
     return this.utility.timeDifference(time).time;

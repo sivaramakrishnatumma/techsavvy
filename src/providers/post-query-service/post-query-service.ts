@@ -22,4 +22,16 @@ export class PostQueryServiceProvider {
       })
     });
   }
+
+  postReply(query, reply) {
+    let body = {query, reply}
+    return new Promise((resolve) => {
+      this.http.get(this.utility.baseUrl + '/sendNotification').subscribe(response => {
+        resolve(response);
+      });
+      // this.http.put(this.utility.baseUrl + '/postreply', body).subscribe(response => {
+      //   resolve(response);
+      // });
+    })
+  }
 }

@@ -7,13 +7,22 @@
                 <p>Siva Rama Krishna</p>
                 <p>DXEMP</p>
             </div>
+            <ion-icon name="md-create" class="edit-icon"></ion-icon>
         </div>
         <ion-list>
-            <button ion-item menuClose (click)="openPage(homePage)">
-                <ion-icon name="contacts"></ion-icon>
-                My Profile
+            <button ion-item menuClose (click)="openPage('MyqueriesPage')">
+                <ion-icon name="heart"></ion-icon>
+                My Queries
             </button>
-            <button ion-item menuClose (click)="openPage(catsPage)">
+            <button ion-item menuClose (click)="openPage('SearchPage')">
+                <ion-icon name="heart"></ion-icon>
+                Search
+            </button>
+            <button ion-item menuClose (click)="openPage('MycreditsPage')">
+                <ion-icon name="heart"></ion-icon>
+                My Credits
+            </button>
+            <button ion-item menuClose>
                 <ion-icon name="heart"></ion-icon>
                 About
             </button>

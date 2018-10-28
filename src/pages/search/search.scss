@@ -43,7 +43,7 @@ page-search {
     ion-searchbar{
         position: absolute;
         z-index: 2;
-        background-color: #dedcdc;
+        background-color: #e8f3f5 !important;
         input{
             border-radius: 5px;
         }
@@ -55,5 +55,30 @@ page-search {
         margin-left: 1px;
         border: 1px solid #ccc;
         padding: 5px;
+    }
+    .tech{
+        background-color: #19374c;
+        margin-right: 5px;
+        padding: 4px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        color: #fff;
+    }
+    .reply-name{
+        margin: 0px !important;
+        color: #003f80;
+        font-weight: 600;
+    }
+    .reply-comment{
+        display: block;
+        border: 1px solid #ccc;
+        background-color: #edf3f5;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .showMore{
+        margin-top: 10px;
+        display: inline-block;
+        color: #5f8594;
     }
 }

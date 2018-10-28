@@ -93,4 +93,12 @@ export class MyApp {
   get navController(): NavController {
     return this.app.getActiveNav();
   }
+
+  logout(){
+    this.nav.setRoot('HomePage');
+  }
+
+  openPage(page){
+    this.nav.push(page);
+  }
 }
